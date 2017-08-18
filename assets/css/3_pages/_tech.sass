@@ -1,0 +1,84 @@
+.tech
+  display: grid
+  grid-template-columns: 1fr 2fr .5fr 1.5fr 1fr
+  grid-template-rows: .5fr 1.5fr 2fr .5fr .5fr
+  grid-template-areas: ". . . . ." ". main . legend title" ". main . legend title" ". tools tools tools ." ". tools tools tools ."
+  align-items: center
+  justify-content: center
+  background:
+    color: white
+
+.icon-container
+  grid-area: main
+  display: none
+.animate
+  display: block
+
+.legend
+  grid-area: legend
+  text-align: justify
+
+.legend-title
+  display: flex
+  align-items: center
+  justify-content: space-around
+
+.legend-icon
+  width: 60px
+
+h4
+  text-align: center
+  justify-self: center
+  align-self: end
+  width: 100%
+
+.tools
+  position: relative
+  grid-area: tools
+  justify-self: stretch
+  display: flex
+  align-items: center
+  justify-content: space-around
+  flex-wrap: wrap
+  margin: 0
+  padding: 30px 0
+  span
+    filter: grayscale(100%)
+    height: 35px
+    width: auto
+    margin: 0 10px
+    display: inline-block
+    &:hover
+      filter: none
+      transition: filter 0.15s ease-in
+    svg
+      width: auto
+// SVG Animation
+
+path
+  &:nth-of-type(1)
+    animation: dash 3s ease-in-out
+  &:nth-of-type(2)
+    animation: dash 3.5s ease-in-out
+  &:nth-of-type(3)
+    animation: dash 4s ease-in-out
+  &:nth-of-type(4)
+    animation: dash 4.5s ease-in-out
+
+@keyframes dash
+  from
+    stroke-dasharray: 10000
+    stroke-dashoffset: 10000
+  to
+    stroke-dashoffset: 0
+
+
+@media #{$widemode, $phone}
+  .tech
+    grid-template-areas: ". title title title ." ". main main main ." ". legend legend legend ." ". tools tools tools ." ". tools tools tools ."
+
+  .tools
+    span
+      margin: 5px
+  .small, h6
+    text-align: center

@@ -1,0 +1,20 @@
+footer
+  bottom: 0
+  left: 0
+  z-index: -2
+  background: $darkgray
+  position: sticky
+  height: 20vh
+  width: 100%
+  display: flex
+  justify-content: space-around
+  align-items: center
+  & nav
+    width: 40%
+
+
+@media #{$widemode, $phone}
+  footer
+    flex-direction: column
+    & nav
+      width: 85%

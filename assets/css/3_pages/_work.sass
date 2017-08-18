@@ -1,0 +1,96 @@
+.work
+  margin-top: 100vh
+  min-height: 100vh
+  background: $silver
+  display: grid
+  grid-template-columns: 1fr 2fr 2fr 1fr
+  grid-template-rows: 1fr 2fr 1.5fr .5fr
+  grid-template-areas: ". slider slider ." "title main main ." "title main main ." ". . . ."
+  align-items: center
+  justify-content: center
+
+.section-title
+  grid-area: title
+  justify-self: stretch
+  align-self: stretch
+  margin: 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+
+
+.tab-list
+  grid-area: slider
+  align-self: stretch
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.slide
+  display: flex
+  align-items: center
+
+.content
+  grid-area: main
+  text-align: center
+  display: none
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr 1fr
+  grid-template-areas: "description image" "description image"
+  justify-content: center
+  align-content: center
+
+.active
+  display: grid
+
+.project-description
+  grid-area: description
+  align-self: center
+  text-align: justify
+  animation: from-left 0.8s linear
+
+.project-img
+  grid-area: image
+  animation: from-right 0.8s linear
+  & img
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3)
+
+
+@keyframes from-left
+  from
+    opacity: 0
+    transform: translateX(-50px)
+  to
+    transform: translateX(0px)
+    opacity: 1
+
+@keyframes from-right
+  from
+    opacity: 0
+    transform: translateX(50px)
+  to
+    transform: translateX(0px)
+    opacity: 1
+
+
+
+
+@media #{$widemode, $phone}
+  .work
+    grid-template-areas: ". title title ." ". main main ." ". main main ." ". slider slider ."
+
+  .section-title
+    flex-direction: row
+
+  .slider-container
+    flex-direction: row
+
+  h5
+    text-align: center
+    font-size: 12px
+  .fa
+    margin-left: 4px
+
+  .content
+    grid-template-areas: "image image" "description description"
